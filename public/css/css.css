@@ -1,0 +1,91 @@
+/* Fichier login et register */
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Fichier recettes */
+.main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Arrondi les coins de l'image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre douce */
+    max-height: 1000px; /* Taille maximale de l'image */
+}
+
+.ingredient {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Espacement entre chaque ingrédient */
+}
+
+.ingredient img {
+    width: 50px; /* Taille fixe pour l'image de l'ingrédient */
+    height: 50px; /* Taille fixe pour l'image de l'ingrédient */
+    object-fit: cover; /* Assure que l'image ne se déforme pas */
+    margin-right: 10px; /* Espacement entre l'image et le texte */
+}
+
+.ingredient p {
+    margin: 0; /* Supprime les marges par défaut */
+}
+
+/* CSS pour la liste des préparations */
+ol {
+    list-style-type: none; /* Supprime les puces de la liste */
+    counter-reset: preparation-counter; /* Réinitialise le compteur pour les étapes */
+}
+
+ol li {
+    position: relative; /* Position relative pour contenir le numéro d'étape */
+    margin-bottom: 20px; /* Marge en bas de chaque étape */
+}
+
+ol li:before {
+    content: counter(preparation-counter); /* Affiche le numéro d'étape */
+    counter-increment: preparation-counter; /* Incrémente le compteur pour chaque étape */
+    position: absolute; /* Position absolue pour le numéro d'étape */
+    left: -30px; /* Ajuste l'alignement du numéro par rapport au texte */
+    top: 0; /* Alignement vertical par défaut */
+    font-weight: bold; /* Police en gras pour le numéro d'étape */
+    font-size: 1.2em; /* Taille de la police pour le numéro d'étape */
+    color: #007bff; /* Couleur du numéro d'étape */
+}
+
+ol li > strong {
+    margin-bottom: 5px; /* Marge en bas du titre de l'étape */
+}
+
+.btn-retour {
+    margin-top: 20px; /* Ajustez la valeur selon vos besoins */
+    position: relative;
+    bottom: 20px; /* Ajustez la valeur pour remonter le bouton */
+}
+
+/* Fichier signalement */
+.mt-20 {
+    margin-top: 20px;
+}
+
+/* Fichier welcome */
+footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 200px; /* Adjust the height as needed */
+    width: 100%;
+}
+
+/* Fichier recherche_utilisateur */
+.modal-dialog {
+    max-width: 90%;
+}

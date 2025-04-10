@@ -16,8 +16,12 @@ class CreateRecettesTable extends Migration
         Schema::create('recettes', function (Blueprint $table) {
             $table->id();
             $table->string('titre');
+            $table->string('difficulte');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
+            $table->text('astuces')->nullable();
+            $table->integer('temps_cuisson');
+            $table->integer('temps_prep')->nullable();
             $table->timestamps(); // Ceci ajoute les colonnes created_at et updated_at
         });
     }

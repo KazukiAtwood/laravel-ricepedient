@@ -10,15 +10,14 @@ class CreateSignalementsTable extends Migration
     {
         Schema::create('signalements', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('comment_id');
-            $table->string('user_name')->default('Invité');
-            $table->text('comment_text');
+            $table->unsignedBigInteger('commentaire_id');
+            $table->string('user_name');
+            $table->text('commentaire_text');
             $table->string('cause');
             $table->string('couleur')->default('rouge');
             $table->timestamps();
 
-            // Foreign key constraint
-            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
+            $table->foreign('commentaire_id')->references('id')->on('commentaires')->onDelete('cascade');
         });
     }
 

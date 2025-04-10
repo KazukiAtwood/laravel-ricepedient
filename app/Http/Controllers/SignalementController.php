@@ -10,21 +10,31 @@ class SignalementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'comment_id' => 'required|exists:comments,id',
-            'user_name' => 'required|string',
-            'comment_text' => 'required|string',
-            'cause' => 'required|string',
+            'commentaire_id' => 'required|exists:commentaires,id',
+            'user_name' => 'required|string|max:255',
+            'commentaire_text' => 'required|string|max:500',
+            'cause' => 'required|string|in:Harcèlement,Inapproprié,Sexuel'
         ]);
 
-        // Enregistrer le signalement dans la base de données
         Signalement::create([
-            'comment_id' => $request->comment_id,
+            'commentaire_id' => $request->commentaire_id,
             'user_name' => $request->user_name,
-            'comment_text' => $request->comment_text,
+            'commentaire_text' => $request->commentaire_text,
             'cause' => $request->cause,
+            'couleur' => 'rouge'
         ]);
 
-        return back()->with('success', 'Le commentaire a été signalé avec succès.');
+        return redirect()->back()->with('success', 'Le commentaire a été signalé avec succès.');
+    }
+
+    public function gestionSignalements()
+    {
+        // Charger tous les signalements avec les informations d'utilisateur associées
+        $signalements = Signalement::with('utilisateur')->get();
+
+        return view('admin.signalement', [
+            'signalements' => $signalements,
+        ]);
     }
 }
 

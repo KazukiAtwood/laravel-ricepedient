@@ -15,10 +15,12 @@ class CreateCommentairesTable extends Migration
     {
         Schema::create('commentaires', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_utilisateur')->default('invité');
+            $table->string('nom_utilisateur')->nullable(); // Ajoutez nullable() ici
             $table->text('contenu');
-            $table->foreignId('recette_id')->constrained()->onDelete('cascade'); // Clé étrangère liée à la table des recettes
+            $table->unsignedBigInteger('recette_id');
             $table->timestamps();
+
+            $table->foreign('recette_id')->references('id')->on('recettes')->onDelete('cascade');
         });
     }
 

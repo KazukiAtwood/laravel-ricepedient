@@ -20,5 +20,20 @@ class Recette extends Model
     {
         return $this->hasMany(Commentaire::class);
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes');
+    }
+
+    public function isLikedByUser($userId)
+    {
+        return $this->likes()->where('user_id', $userId)->exists();
+    }
+
+    public function preparations()
+    {
+        return $this->hasMany(Preparation::class);
+    }
 }
 
